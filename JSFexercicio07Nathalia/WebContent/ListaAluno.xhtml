@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Lista de Alunos</title>
+</h:head>
+<h:body>
+	<h:form>
+	
+	<p:commandLink value="CADASTRO ALUNO" action="CadastroAluno.xhtml" immediate="true"/> |
+	<p:commandLink value="CADASTRO GRAU DE INSTRUÇÃO" action="CadastroGrauInstrucao.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA GRAU DE INSTRUÇÃO" action="ListaGrauInstrucao.xhtml" immediate="true"/> 
+	
+		<h1>Lista de Alunos</h1>
+		<p:messages />
+		<p:dataTable border="1" value="#{alunoControllerNathalia.listar}" var="aluno">
+		
+			<p:column headerText="Id">
+				<h:outputText value="#{aluno.id}" />
+			</p:column>
+			
+			<p:column headerText="Aluno">
+				<h:outputText value="#{aluno.nome}" />
+			</p:column>
+			
+			<p:column headerText="Idade">
+				<h:outputText value="#{aluno.idade}" />
+			</p:column>
+			
+			<p:column headerText="Data de Nascimento">
+				<h:outputText value="#{aluno.nascimento}" />
+			</p:column>
+			
+			<p:column headerText="Grau de Instrução">
+				<h:outputText value="#{aluno.grauInstitucional.grau}" />
+			</p:column>
+			
+			<p:column headerText="Ação">
+				
+				<p:commandButton value="Editar" action="#{alunoControllerNathalia.editar}" >
+				<f:setPropertyActionListener value="#{aluno}" target="#{alunoControllerNathalia.aluno}" ajax="false"/>
+				</p:commandButton>
+				
+				<p:commandButton value="Excluir" action="#{alunoControllerNathalia.excluir}"
+				onclick="return confirm('Tem certeza que deseja excluir ?')">
+				<f:setPropertyActionListener value="#{aluno}" target="#{alunoControllerNathalia.aluno}" ajax="false"/>
+				</p:commandButton>
+				
+			</p:column>
+		
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

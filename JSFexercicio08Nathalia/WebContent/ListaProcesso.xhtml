@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>lista de Processo</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h1>lista de Processo</h1>
+		<p:messages />
+		<p:dataTable border="1" value="#{processoControllerNathalia.lista}"
+			var="processo">
+
+			<p:column headerText="Id">
+				<h:outputText value="#{processo.id}" />
+			</p:column>
+			
+			<p:column headerText="Numero">
+				<h:outputText value="#{processo.numero}" />
+			</p:column>
+			
+			<p:column headerText="Descrição">
+				<h:outputText value="#{processo.processo}" />
+			</p:column>
+			
+			<p:column headerText="Valor">
+				<h:outputText value="#{processo.valor}" />
+			</p:column>
+
+			<p:column headerText="Ação">
+
+				<p:commandButton value="Editar"
+					action="#{processoControllerNathalia.editar}">
+					<f:setPropertyActionListener value="#{processo}"
+						target="#{processoControllerNathalia.processo}" ajax="false"/>
+				</p:commandButton>
+
+				<p:commandButton onclick="return confirm('Confirma a exclusão?');"
+					value="Excluir" action="#{processoControllerNathalia.excluir}">
+					<f:setPropertyActionListener value="#{processo}"
+						target="#{processoControllerNathalia.processo}" ajax="false"/>
+				</p:commandButton>
+
+			</p:column>
+			
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

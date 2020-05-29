@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Cliente</title>
+</h:head>
+<h:body>
+	
+	<h:form>
+	
+	<p:commandLink value="CADASTRO CLIENTE" action="CadastroCliente.xhtml" immediate="true"/> |
+	<p:commandLink value="CADASTRO ORDEM DE SERVIÇO" action="CadastroOrdemServico.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA CLIENTE" action="ListaCliente.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA ORDEM DE SERVIÇO" action="ListaOrdemServico.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA SERVICO" action="ListaServico.xhtml" immediate="true"/>
+	
+		<h1>Cadastro de Cliente</h1>
+		<p:messages />
+		<p:panelGrid columns="2">
+		
+		<h:outputText value="Nome: *" />
+			<p:inputText value="#{clienteContollerNathalia.cliente.nome}"
+				required="true"
+				requiredMessage="O campo nome é obrigatório!" />
+		
+			<h:outputText value="Idade: *" />
+			<p:inputText value="#{clienteContollerNathalia.cliente.idade}"
+				required="true"
+				requiredMessage="O campo idade é obrigatório!" />
+				
+			<p:commandButton value="Salvar" action="#{clienteContollerNathalia.salvar}" ajax="false" />
+			
+			<p:commandButton value="Limpar" action="CadastroServico.xhtml" 
+			actionListener="#{clienteContollerNathalia.limparCampos}"
+			immediate="true" ajax="false"/>
+			
+		</p:panelGrid>
+	</h:form>
+</h:body>
+
+</html>

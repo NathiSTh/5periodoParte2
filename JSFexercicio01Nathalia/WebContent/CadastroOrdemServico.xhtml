@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Ordem de Servico</title>
+</h:head>
+
+<h:body>
+	<h:form>
+	
+	<p:commandLink value="CADASTRO CLIENTE" action="CadastroCliente.xhtml" immediate="true"/> |
+	<p:commandLink value="CADASTRO SERVIÇO" action="CadastroServico.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA CLIENTE" action="ListaCliente.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA ORDEM DE SERVIÇO" action="ListaOrdemServico.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA SERVICO" action="ListaServico.xhtml" immediate="true"/>
+	
+		<h1>Cadastro de Ordem de Servico</h1>
+		<p:messages />
+		<p:panelGrid columns="2">
+
+			<h:outputText value="Cliente" />
+			<p:selectOneMenu
+				value="#{ordemServicoControllerNathalia.clienteSelecionado}"
+				converter="clienteConverter" required="true"
+				requiredMessage="O campo cliente é obrigatório!" >
+
+			<f:selectItem itemLabel="SELECIONE" />
+			<f:selectItems 
+				value="#{clienteContollerNathalia.lista}" 
+				var="cliente"
+				itemLabel="#{cliente.nome}"
+				itemValue="#{cliente}" />
+			</p:selectOneMenu>
+			
+			<h:outputText value="Servico" />
+			<p:selectOneMenu value="#{ordemServicoControllerNathalia.servicoSelecionado}"
+				converter="servicoConverter" required="true"
+				requiredMessage="O campo serviço é obrigatório!">
+				
+			<f:selectItem itemLabel="SELECIONE" />
+			<f:selectItems 
+				value="#{servicoControllerNathalia.lista}" 
+					var="servico"
+				itemLabel="#{servico.nome}"
+				itemValue="#{servico}" />
+			</p:selectOneMenu>
+
+			<h:outputText value="Quantidade de serviço:*" />
+			<p:inputText value="#{ordemServicoControllerNathalia.ordem.quant}"
+				required="true" requiredMessage="O campo quantidade de serviço é obrigatório!" />
+
+			<h:outputText value="Valor unitario:*" />
+			<p:inputText value="#{ordemServicoControllerNathalia.ordem.valorUnitario}"
+				required="true" requiredMessage="O campo valor unitario do serviço é obrigatório!" />
+
+			<h:outputText value="Valor Total do Desconto:*" />
+			<p:inputText value="#{ordemServicoControllerNathalia.ordem.valorDesconto}"
+				required="true" requiredMessage="O campo desconto é obrigatório!" />
+
+			<p:commandButton value="Salvar" action="#{ordemServicoControllerNathalia.salvar}" ajax="false"/>
+			<p:commandButton value="Limpar" action="CadastroOrdemServico.xhtml"
+				actionListener="#{ordemServicoControllerNathalia.limparCampos}" immediate="true" ajax="false"/>
+
+
+
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

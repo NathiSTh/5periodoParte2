@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Lista Produto</title>
+</h:head>
+<h:body>
+	<h:form>
+	
+	<h:commandLink value="Cadastro de Produto" action="CadastroProduto.xhtml" immediate="true"/> |
+	<h:commandLink value="Cadastro de Venda" action="CadastroVenda.xhtml" immediate="true"/> |
+	<h:commandLink value="Lista de Venda" action="ListaVenda.xhtml" immediate="true"/> 
+	
+		<h1>Lista de Produtos</h1>
+		<p:messages />
+		<p:dataTable border="1" value="#{produtoControllerNathalia.lista}"
+			var="produto">
+
+			<p:column headerText="Id">
+				<h:outputText value="#{produto.id}" />
+			</p:column>
+			
+			<p:column headerText="Produto">
+				<h:outputText value="#{produto.produto}" />
+			</p:column>
+			
+			<p:column headerText="Ação">
+				
+				<p:commandButton value="Editar" action="#{produtoControllerNathalia.editar}">
+					<f:setPropertyActionListener value="#{produto}"
+						target="#{produtoControllerNathalia.produto}" ajax="false"/>
+				</p:commandButton>
+				
+				<p:commandButton onclick="return confirm('Confirma a exclusão?');"
+					value="Excluir" action="#{produtoControllerNathalia.excluir}">
+					<f:setPropertyActionListener value="#{produto}"
+						target="#{produtoControllerNathalia.produto}" ajax="false"/>
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

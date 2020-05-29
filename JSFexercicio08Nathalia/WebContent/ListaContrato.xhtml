@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>lista Contrato</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>lista Contrato</h1>
+		<p:messages />
+		<p:dataTable border="1" value="#{contratoControllerNathalia.lista}"
+			var="contrato">
+
+			<p:column headerText="Id">
+				<f:facet name="header"><h:outputText value="Id" /></f:facet>
+				<h:outputText value="#{contrato.id}" />
+			</p:column>
+
+			<p:column headerText="Numero do Contrato">
+				<h:outputText value="#{contrato.numContrato}" />
+			</p:column>
+			
+			<p:column headerText="Descrição do Contrato">
+				<h:outputText value="#{contrato.contrato}" />
+			</p:column>
+
+			<p:column headerText="Valor do Contrato">
+				<h:outputText value="#{contrato.valor}" />
+			</p:column>
+
+			<p:column headerText="Data Inicio">
+				<h:outputText value="#{contrato.dataInicio}" />
+			</p:column>
+
+			<p:column headerText="Data final">
+				<h:outputText value="#{contrato.dataFim}" />
+			</p:column>
+
+			<p:column headerText="Numero do Processo">
+				<h:outputText value="#{contrato.processo.numero}" />
+			</p:column>
+
+			<p:column headerText="Descriçao do Processo">
+				<h:outputText value="#{contrato.processo.processo}" />
+			</p:column>
+			
+			<p:column headerText="Valor do Processo">
+				<h:outputText value="#{contrato.processo.valorProc}" />
+			</p:column>
+
+			<p:column headerText="Ação">
+
+				<p:commandButton value="Editar"
+					action="#{contratoControllerNathalia.editar}">
+					<f:setPropertyActionListener value="#{contrato}"
+						target="#{contratoControllerNathalia.contrato}" ajax="false"/>
+				</p:commandButton>
+
+				<p:commandButton onclick="return confirm('Confirma a exclusão?');"
+					value="Excluir" action="#{contratoControllerNathalia.excluir}">
+					<f:setPropertyActionListener value="#{contrato}"
+						target="#{contratoControllerNathalia.contrato}" ajax="false"/>
+
+				</p:commandButton>
+
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

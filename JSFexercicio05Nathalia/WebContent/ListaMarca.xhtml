@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+<h:head>
+	<title>Lista de Marca</title>
+</h:head>
+<h:body>
+	<h:form>
+	
+	<p:commandLink value="CADASTRO MARCA" action="CadastroMarca.xhtml" immediate="true"/> |
+	<p:commandLink value="CADASTRO CARRO" action="CadastroCarro.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA CARRO" action="ListaCarro.xhtml" immediate="true"/> 
+	
+		<h1>Lista de Marca</h1>
+		<p:messages />
+		<p:dataTable border="1" value="#{marcaControllerNathalia.lista}" var="marca">
+		
+		<p:column headerText="Id">
+				<h:outputText value="#{marca.id}" />
+			</p:column>
+			
+			<p:column headerText="Marca">
+				<h:outputText value="#{marca.desc}" />
+			</p:column>	
+			
+			<p:column headerText="Ação">
+				
+				<p:commandButton 
+					value="Editar"
+					action="#{marcaControllerNathalia.editar}">
+					<f:setPropertyActionListener 
+						value="#{marca}" 
+						target="#{marcaControllerNathalia.marca}" ajax="false"/>	
+				</p:commandButton>
+				
+				<p:commandButton onclick="return confirm('Confirma a exclusão?');"
+					value="Excluir"
+					action="#{marcaControllerNathalia.excluir}">
+					<f:setPropertyActionListener 
+						value="#{marca}" 
+						target="#{marcaControllerNathalia.marca}" ajax="false"/>	
+				</p:commandButton>
+				
+				
+			</p:column>	
+			
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

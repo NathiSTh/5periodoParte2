@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Produto</title>
+</h:head>
+
+<h:body>
+	<h:form>
+	
+	<p:commandLink value="Cadastro de Venda" action="CadastroVenda.xhtml" immediate="true"/> |
+	<p:commandLink value="Lista de Produto" action="ListaProduto.xhtml" immediate="true"/> |
+	<p:commandLink value="Lista de Venda" action="ListaVenda.xhtml" immediate="true"/>
+	
+		<h1>Cadastro de Produto</h1>
+		<p:messages />
+		<p:panelGrid columns="2">
+
+			<h:outputText value="Produto:*" />
+			<p:inputText 
+			value="#{produtoControllerNathalia.produto.produto}"
+				required="true" 
+				requiredMessage="O campo Produto é obrigatorio!" />
+				
+			<p:commandButton value="Salvar" action="#{produtoControllerNathalia.salvar}" ajax="false"/>
+			<p:commandButton value="Limpar" action="CadastroProduto.xhtml"
+				actionListener="#{produtoControllerNathalia.limparCampos}" immediate="true" ajax="false"/>
+				
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

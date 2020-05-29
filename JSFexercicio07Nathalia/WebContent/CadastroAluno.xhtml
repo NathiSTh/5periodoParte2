@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Aluno</title>
+</h:head>
+<h:body>
+	<h:form>
+	
+	<p:commandLink value="CADASTRO GRAU DE INSTRUÇÃO" action="CadastroGrauInstrucao.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA GRAU DE INSTRUÇÃO" action="ListaGrauInstrucao.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA ALUNO" action="ListaAluno.xhtml" immediate="true"/> 
+	
+		<h1>Cadastro de Aluno</h1>
+		<p:messages />
+		<p:panelGrid columns="2">
+
+			<h:outputText value="Nome Aluno: *" />
+			<p:inputText value="#{alunoControllerNathalia.aluno.nome}" 
+			required="true" requiredMessage="O campo Nome é obrigatório!" />
+			
+			<h:outputText value="Idade: *" />
+			<p:inputText value="#{alunoControllerNathalia.aluno.idade}" 
+			required="true" requiredMessage="O campo Idade é obrigatório!" />
+			
+			<h:outputText value="Data de Nascimento: *" />
+			<p:inputText value="#{alunoControllerNathalia.aluno.nascimento}" 
+			required="true" requiredMessage="O campo Data de Nascimento é obrigatório!">
+			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</p:inputText>
+			
+			<h:outputText value="Grau de Instrução: *" />
+			<p:selectOneMenu value="#{alunoControllerNathalia.grauSelecionado}"
+			converter="GrauConverter"
+			required="true" requiredMessage="O campo Grau de Instrução é obrigatório!">
+			
+			<f:selectItem itemLabel="SELECIONE"/>
+			<f:selectItems 
+			 		value="#{grauInstrucaoControllerNathalia.lista}"
+			 		var="grau" 
+			 		 itemLabel="#{grau.grau}"
+			 		itemValue="#{grau}"/>
+			
+			</p:selectOneMenu>			
+			
+			
+			<p:commandButton value="Salvar" action="#{alunoControllerNathalia.salvar}" ajax="false"/>
+			
+			<p:commandButton value="Limpar" action="CadastroAluno.xhtml" 
+			actionListener="#{alunoControllerNathalia.limparCampos}" immediate="true" ajax="false"/>
+			
+		</p:panelGrid>
+	</h:form>
+</h:body>
+
+</html>
+

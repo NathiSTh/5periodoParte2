@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Grau de Instrução</title>
+</h:head>
+<h:body>
+	
+	<h:form>
+	
+	<p:commandLink value="CADASTRO ALUNO" action="CadastroAluno.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA ALUNO" action="ListaAluno.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA GRAU DE INSTRUCAO" action="ListaGrauInstrucao.xhtml" immediate="true"/> 
+	
+		<h1>Cadastro de Grau de Instrução</h1>
+		<p:messages />
+		<p:panelGrid columns="2">
+		
+			<h:outputText value="Grau de Instrução: *" />
+			<p:inputText value="#{grauInstrucaoControllerNathalia.grau.grau}"
+				required="true"
+				requiredMessage="O campo Grau de Instrução é obrigatório!" />
+				
+			<p:commandButton value="Salvar" action="#{grauInstrucaoControllerNathalia.salvar}" ajax="false"/>
+			
+			<p:commandButton value="Limpar" action="CadastroGrauInstrucao.xhtml" 
+			actionListener="#{grauInstrucaoControllerNathalia.limparCampos}"
+			immediate="true" ajax="false"/>
+			
+		</p:panelGrid>
+	</h:form>
+</h:body>
+
+</html>

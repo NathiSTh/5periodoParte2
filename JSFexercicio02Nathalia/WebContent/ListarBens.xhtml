@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Lista de Bens</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+	<p:commandLink value="Cadastro de Bens" action="CadastroBens.xhtml" immediate="true"/> |
+	<p:commandLink value="Cadastro de Departamento" action="CadastroDepartamento.xhtml" immediate="true"/> |
+	<p:commandLink value="Lista de Departamentos" action="ListaDepartamento.xhtml" immediate="true"/> 
+	
+		<h1>Lista de Bens</h1>
+
+		<p:dataTable value="#{bensControllerNathalia.listar}" var="bens" border="1">
+
+			<p:column headerText="Id">
+				<h:outputText value="#{bens.id}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{bens.nome}" />
+			</p:column>
+
+			<p:column headerText="Especificação">
+				<h:outputText value="#{bens.especificacao}" />
+			</p:column>
+
+			<p:column headerText="Departamento">
+				<h:outputText value="#{bens.departamento.departemanto}" />
+			</p:column>
+
+			<p:column headerText="Valor">
+				<h:outputText value="#{bens.valor}" />
+			</p:column>
+
+			
+			
+			<p:column headerText="Acao">
+				<p:commandButton value="Editar" action="#{bensControllerNathalia.editar}">
+					<f:setPropertyActionListener value="#{bens}" target="#{bensControllerNathalia.bens}" ajax="false"/>
+				</p:commandButton>
+				
+				<p:commandButton value="Excluir" action="#{bensControllerNathalia.excluir}" 
+				onclick= "return confirm('Tem certeza que deseja excluir ?')">
+				<f:setPropertyActionListener value="#{bens}" target="#{bensControllerNathalia.bens}" ajax="false"/>
+				</p:commandButton>
+				
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+</h:body>
+
+</html>

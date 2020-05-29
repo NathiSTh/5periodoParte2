@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Cadastro de Fornecedor</title>
+</h:head>
+<h:body>
+	
+	<p:form>
+	
+	<p:commandLink value="CADASTRO PRODUTO" action="CadastroProduto.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA FORNECEDOR" action="ListaFornecedor.xhtml" immediate="true"/> |
+	<p:commandLink value="LISTA PRODUTO" action="ListaProduto.xhtml" immediate="true"/> 
+	
+		<h1>Cadastro de Fornecedor</h1>
+		<p:messages />
+		<p:panelGrid columns="2">
+		
+			<h:outputText value="Descrição: *" />
+			<p:inputText value="#{fornecedorControllerNathalia.fornecedor.descForn}"
+				required="true"
+				requiredMessage="O campo descrição é obrigatório!" />
+				
+			<p:commandButton value="Salvar" action="#{fornecedorControllerNathalia.salvar}" ajax="false"/>
+			
+			<p:commandButton value="Limpar" action="CadastroFornecedor.xhtml" 
+			actionListener="#{fornecedorControllerNathalia.limparCampos}"
+			immediate="true" ajax="false"/>
+			
+		</p:panelGrid>
+	</h:form>
+</h:body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Contrato</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h1>Cadastro de Contrato</h1>
+		<p:messages />
+		<p:panelGrid columns="2">
+
+			<h:outputText value="Numero de Contrato:*" />
+			<p:inputText value="#{contratoControllerNathalia.contrato.numContrato}"
+				required="true" requiredMessage="O campo Numero é obrigatorio!" />
+				
+				<h:outputText value="Descricao do Contrato:*" />
+			<p:inputText value="#{contratoControllerNathalia.contrato.contrato}"
+				required="true" requiredMessage="O campo Descrição é obrigatorio!" />
+
+			<h:outputText value="Valor do Contrato:*" />
+			<p:inputText value="#{contratoControllerNathalia.contrato.valor}"
+				required="true" requiredMessage="O campo Valor é obrigatorio!" />
+
+			<h:outputText value="Data de inicio de Contrato:*" />
+			<p:inputText value="#{contratoControllerNathalia.contrato.dataInicio}"
+				required="true" requiredMessage="O campo Data inicio é obrigatorio!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+				</p:inputText>
+
+			<h:outputText value="Data Fim de Contrato:*" />
+			<p:inputText value="#{contratoControllerNathalia.contrato.dataFim}"
+				required="true" requiredMessage="O campo Data fim é obrigatorio!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+				</p:inputText>
+
+			<h:outputText value="Processo: *" />
+			<p:selectOneMenu value="#{contratoControllerNathalia.processoSelecionado}"
+			converter="processoConverter"
+			required="true" requiredMessage="O campo Processo é obrigatório!">
+			
+			<f:selectItem itemLabel="SELECIONE"/>
+			<f:selectItems 
+			 		value="#{processoControllerNathalia.lista}"
+			 		var="processo" 
+			 		 itemLabel="#{processo.processo}"
+			 		itemValue="#{processo}"/>
+			
+			</p:selectOneMenu>		
+			
+			<p:commandButton value="Salvar" action="#{contratoControllerNathalia.salvar}" ajax="false"/>
+			<p:commandButton value="Limpar" action="CadastroContrato.xhtml"
+				actionListener="#{contratoControllerNathalia.limparCampos}" immediate="true" ajax="false"/>
+				
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

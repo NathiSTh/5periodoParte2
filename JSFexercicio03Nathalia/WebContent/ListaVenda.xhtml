@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Lista de Venda</title>
+</h:head>
+
+<h:body>
+	<h:form>
+	
+	<p:commandLink value="Cadastro de Produto" action="CadastroProduto.xhtml" immediate="true"/> |
+	<p:commandLink value="Cadastro de Venda" action="CadastroVenda.xhtml" immediate="true"/> |
+	<p:commandLink value="Lista de Produto" action="ListaProduto.xhtml" immediate="true"/>
+	
+		<h1>Lista de Venda</h1>
+		<p:messages />
+		<p:dataTable border="1" value="#{vendaControllerNathalia.lista}" var="venda">
+
+			<p:column headerText="Id">
+				<h:outputText value="#{venda.id}" />
+			</p:column>
+
+			<p:column headerText="Cliente">
+				<h:outputText value="#{venda.desc}" />
+			</p:column>
+
+			<p:column headerText="Valor">
+				<h:outputText value="#{venda.valor}" />
+			</p:column>
+
+			<p:column headerText="id Produto">
+				<h:outputText value="#{venda.produto.id}" />
+			</p:column>
+
+			<p:column headerText="Descrição do Produto">
+				<h:outputText value="#{venda.produto.produto}" />
+			</p:column>
+
+			<p:column headerText="acão">
+				
+				<p:commandButton value="Editar" action="#{vendaControllerNathalia.editar}">
+					<f:setPropertyActionListener value="#{venda}"
+						target="#{vendaControllerNathalia.venda}" ajax="false" />
+				</p:commandButton>
+				
+				<p:commandButton value="Excluir" action="#{vendaControllerNathalia.excluir}">
+					<f:setPropertyActionListener value="#{venda}"
+						target="#{vendaControllerNathalia.venda}" ajax="false"/>
+				</p:commandButton>
+				
+			</p:column>
+			
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
